@@ -13,14 +13,14 @@ export class UserController {
   @Post()
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({type: User})
-  create(@Body() createNewsDto: CreateUserDto) {
+  async create(@Body() createNewsDto: CreateUserDto) {
     return this.userService.create(createNewsDto);
   }
 
   @Get()
   @ApiOperation({ summary: 'Finds all users, staff only' })
   @ApiResponse({type: [User]})
-  findAll() {
+  async findAll() {
     return this.userService.findAll();
   }
 
@@ -28,7 +28,7 @@ export class UserController {
   @ApiOperation({ summary: 'Finds user by id, user himself and staff only' })
   @ApiResponse({type: User})
   @ApiParam({name: 'id', example: 2})
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
 
@@ -37,7 +37,7 @@ export class UserController {
   @Patch(':id')
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: CreateUserDto})
-  update(@Param('id') id: string, @Body() updateNewsDto: UpdateUserDto) {
+  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateUserDto) {
     return this.userService.update(+id, updateNewsDto);
   }
 
@@ -45,7 +45,7 @@ export class UserController {
   @Delete(':id')
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: User})
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
 }

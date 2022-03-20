@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateHomeDto } from './dto/create-home.dto';
+import { UpdateHomeDto } from './dto/update-home.dto';
 import { Home } from './entities/home.entity';
 
 @Injectable()
@@ -24,7 +25,7 @@ export class HomeService {
     return this.homeRepository.findOne({id});
   }
 
-  async update(id: number, updateHomeDto: CreateHomeDto) {
+  async update(id: number, updateHomeDto: UpdateHomeDto) {
     await this.homeRepository.update({id}, {...updateHomeDto, updated_at: Date()})
     return this.homeRepository.findOne({id});
   }

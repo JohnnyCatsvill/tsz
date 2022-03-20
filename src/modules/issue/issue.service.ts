@@ -25,27 +25,35 @@ export class IssueService {
   ) {}
 
   async create(createIssueDto: CreateIssueDto): Promise<Issue> {
-    const creator = this.userRepository.findOne({id: createIssueDto.id_created_by})
-    return 'This action adds a new Isse';
+    const creator = await this.userRepository.findOne({id: createIssueDto.id_created_by});
+    const flat = await this.flatRepository.findOne({id: createIssueDto.id_flat});
+    const issue = this.issueRepository.create(createIssueDto);
+    issue.flat = flat;
+    issue.createdBy = creator;
+    return this.issueRepository.save(issue);
   }
 
-  async findAll() {
-    return `This action returns all Isses`;
+  async findAll(): Promise<[Issue[], number]> {
+    return this.issueRepository.findAndCount();
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} Isse`;
+  async findOne(id: number): Promise<Issue> {
+    return this.issueRepository.findOne({id});
   }
 
-  async update(id: number, updateIsseDto: UpdateIssueDto) {
-    return `This action updates a #${id} Isse`;
+  async update(id: number, updateIsseDto: UpdateIssueDto): Promise<Issue> {
+    await this.issueRepository.update({id}, {...updateIsseDto, updated_at: Date()});
+    return this.issueRepository.findOne({id});
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} Isse`;
+  async softRemove(id: number): Promise<Issue> {
+    await this.issueRepository.update({id}, {deleted_at: Date()});
+    return this.issueRepository.findOne({id});
   }
 
-  async softRemove(id: number) {
-    return `This action removes a #${id} Isse`;
+  async remove(id: number): Promise<Issue> {
+    const issue = await this.issueRepository.findOne({id});
+    this.issueRepository.delete({id});
+    return issue;
   }
 }

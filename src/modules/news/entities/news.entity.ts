@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Home } from '../../home/entities/home.entity';
 import { SharedEntity } from '../../shared/shared.entity';
 import { User } from '../../user/entities/user.entity';
@@ -21,11 +21,11 @@ export class News extends SharedEntity {
   })
   description: string;
 
-  @ManyToOne(type => Home)
-  @ApiProperty({ type: Number, example: 2, description: 'home this news attahced to' })
-  home: Home;
+  @Column({nullable: true})
+  @ApiProperty({ type: Home, description: 'home this news attahced to', default: null })
+  home: number;
 
   @ManyToOne(type => User)
   @ApiProperty({ type: Number, example: 2, description: 'user, who wrote this news' })
-  user: User;
+  author: User;
 }

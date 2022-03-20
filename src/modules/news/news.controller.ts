@@ -37,11 +37,19 @@ export class NewsController {
   @ApiResponse({type: News})
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: CreateNewsDto})
-  async update(@Param('id') id: string, @Body() updateNewsDto: CreateNewsDto) {
+  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateNewsDto) {
     return this.newsService.update(+id, updateNewsDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Deletes news by id, staff only' })
+  @ApiParam({name: 'id', example: 2})
+  @ApiResponse({type: News})
+  async softRemove(@Param('id') id: string) {
+    return this.newsService.softRemove(+id);
+  }
+
+  @Delete(':id/hard')
   @ApiOperation({ summary: 'Deletes news by id, staff only' })
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: News})

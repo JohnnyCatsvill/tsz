@@ -4,9 +4,6 @@ import { IssueStatus } from '../enums/issue-status.enum';
 import { CreateIssueDto } from './create-issue.dto';
 
 export class UpdateIssueDto extends PartialType(CreateIssueDto) {
-  @ApiProperty({ example: 1, description: 'id of issue' })
-  id: number;
-
   @ApiProperty({enum: IssueStatus, example: IssueStatus.Created, description: 'Status of issue' })
   status: IssueStatus;
     

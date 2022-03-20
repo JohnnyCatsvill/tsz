@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateNewsDto {
   @ApiProperty({
@@ -14,7 +14,7 @@ export class CreateNewsDto {
   })
   description: string;
 
-  @ApiProperty({ example: 12, description: 'id of home news attached to' })
+  @ApiPropertyOptional({ example: 12, description: 'id of home news attached to' })
   id_home: number;
 
   @ApiProperty({ example: 2, description: 'id of user who wrote this news' })

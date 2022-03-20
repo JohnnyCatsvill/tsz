@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Home } from '../home/entities/home.entity';
 import { CreateFlatDto } from './dto/create-flat.dto';
+import { UpdateFlatDto } from './dto/update-flat.dto';
 import { Flat } from './entities/flat.entity';
 
 @Injectable()
@@ -30,7 +31,7 @@ export class FlatService {
     return this.flatRepository.findOne({id});
   }
 
-  async update(id: number, updateFlatDto: CreateFlatDto): Promise<Flat> {
+  async update(id: number, updateFlatDto: UpdateFlatDto): Promise<Flat> {
     await this.flatRepository.update({id}, {...updateFlatDto, updated_at: Date()});
     return this.flatRepository.findOne({id});
   }

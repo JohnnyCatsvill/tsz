@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { NewsModule } from './modules/news/news.module';
-import { MeterModule } from './modules/meter/meterModule';
+import { MeterModule } from './modules/meter/meter.module';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IssueModule } from './modules/issue/issue.module';

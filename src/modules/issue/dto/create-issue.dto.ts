@@ -6,7 +6,7 @@ export class CreateIssueDto {
   title: string;
 
   @ApiProperty({ example: 'Подьезд 2, 3 этаж', description: 'Description of issue (details)' })
-  description: Date;
+  description: string;
 
   @ApiProperty({enum: IssueCategory, example: IssueCategory.Shared, description: 'Category of issue, field to tell if this application shred for all users all private' })
   category: IssueCategory;

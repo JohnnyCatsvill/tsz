@@ -14,14 +14,14 @@ export class MeterController {
   @Post()
   @ApiOperation({ summary: 'Create meter, staff only' })
   @ApiResponse({type: Meter})
-  create(@Body() createNewsDto: CreateMeterDto) {
+  async create(@Body() createNewsDto: CreateMeterDto) {
     return this.metersService.create(createNewsDto);
   }
 
   @Get()
   @ApiOperation({ summary: 'Finds all meter user connected to, everyone for staff' })
   @ApiResponse({type: [Meter]})
-  findAll() {
+  async findAll() {
     return this.metersService.findAll();
   }
 
@@ -29,33 +29,41 @@ export class MeterController {
   @ApiOperation({ summary: 'Finds meter by id, only ones user connected to, everyone for staff' })
   @ApiResponse({type: Meter})
   @ApiParam({name: 'id', example: 2})
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.metersService.findOne(+id);
   }
 
+  @Patch(':id')
   @ApiOperation({ summary: 'Updates meter by id, staff only' })
   @ApiResponse({type: Meter})
-  @Patch(':id')
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: CreateMeterDto})
-  update(@Param('id') id: string, @Body() updateNewsDto: UpdateMeterDto) {
+  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateMeterDto) {
     return this.metersService.update(+id, updateNewsDto);
   }
 
-  @ApiOperation({ summary: 'Deletes meter by id, staff only' })
   @Delete(':id')
+  @ApiOperation({ summary: 'Deletes meter by id, staff only' })
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: Meter})
-  remove(@Param('id') id: string) {
+  async removeSoft(@Param('id') id: string) {
     return this.metersService.remove(+id);
   }
 
+  @Delete(':id/hard')
+  @ApiOperation({ summary: 'Deletes meter by id (hard delete), staff only' })
+  @ApiParam({name: 'id', example: 2})
+  @ApiResponse({type: Meter})
+  async remove(@Param('id') id: string) {
+    return this.metersService.remove(+id);
+  }
+
+  @Post(':id/sendValues')
   @ApiOperation({ summary: 'Sends new values of meter if user connected to' })
-  @Post('sendValues/:id')
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: SendMeterValuesDto})
   @ApiResponse({type: Meter})
-  sendValues(@Param('id') id: string) {
-    return this.metersService.sendValues(+id);
+  async sendValues(@Body() sendMeterValuesDto: SendMeterValuesDto) {
+    return this.metersService.sendValues(sendMeterValuesDto.id, sendMeterValuesDto.value);
   }
 }

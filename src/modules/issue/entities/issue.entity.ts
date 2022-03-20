@@ -21,7 +21,7 @@ export class Issue extends SharedEntity {
   @ApiProperty({enum: IssueCategory, example: IssueCategory.Shared, description: 'Category of Issue, field to tell if this Issue shred for all users all private' })
   category: IssueCategory;
 
-  @ManyToOne(type => Flat)
+  @ManyToOne(type => Flat, {onDelete: 'CASCADE'})
   @ApiProperty({ type: Number, example: 2, description: 'Flat this issue come from' })
   flat: Flat;
 

@@ -3,6 +3,7 @@ import { HomeService } from './home.service';
 import { CreateHomeDto } from './dto/create-home.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Home } from './entities/home.entity';
+import { UpdateHomeDto } from './dto/update-home.dto';
 
 @ApiTags('Home')
 @Controller('Home')
@@ -36,7 +37,7 @@ export class HomeController {
   @ApiResponse({type: Home})
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: CreateHomeDto})
-  async update(@Param('id') id: string, @Body() updateHomeDto: CreateHomeDto) {
+  async update(@Param('id') id: string, @Body() updateHomeDto: UpdateHomeDto) {
     return this.homeService.update(+id, updateHomeDto);
   }
 

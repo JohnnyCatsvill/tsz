@@ -3,6 +3,7 @@ import { FlatService } from './flat.service';
 import { CreateFlatDto } from './dto/create-flat.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Flat } from './entities/flat.entity';
+import { UpdateFlatDto } from './dto/update-flat.dto';
 
 @ApiTags('Flat')
 @Controller('Flat')
@@ -36,7 +37,7 @@ export class FlatController {
   @ApiResponse({type: Flat})
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: CreateFlatDto})
-  async update(@Param('id') id: string, @Body() updateFlatDto: CreateFlatDto) {
+  async update(@Param('id') id: string, @Body() updateFlatDto: UpdateFlatDto) {
     return this.flatService.update(+id, updateFlatDto);
   }
 
