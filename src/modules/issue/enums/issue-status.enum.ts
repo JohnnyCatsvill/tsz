@@ -1,4 +1,4 @@
-export enum IssuesStatus {
+export enum IssueStatus {
   Undefined = 'Undefined',
   Created = 'Created',
   InProgress = 'InProgress',

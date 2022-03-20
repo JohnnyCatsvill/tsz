@@ -3,7 +3,7 @@ import { CreateMeterDto } from './dto/create-meter.dto';
 import { UpdateMeterDto } from './dto/update-meter.dto';
 
 @Injectable()
-export class MetersService {
+export class MeterService {
   create(createMeterDto: CreateMeterDto) {
     return 'This action adds a new meter';
   }

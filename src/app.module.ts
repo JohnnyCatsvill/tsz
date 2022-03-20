@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { NewsModule } from './modules/news/news.module';
-import { MetersModule } from './modules/meter/meters.module';
+import { MeterModule } from './modules/meter/meterModule';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { IssueModule } from './modules/issue/issue.module';
@@ -12,7 +12,7 @@ import { HomeModule } from './modules/home/home.module';
     TypeOrmModule.forRoot(),
     NewsModule, 
     IssueModule,
-    MetersModule, 
+    MeterModule,
     UserModule, 
     FlatModule, 
     HomeModule, 

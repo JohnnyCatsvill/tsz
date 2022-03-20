@@ -3,9 +3,9 @@ import { Flat } from "../../flat/entities/flat.entity";
 import { SharedEntity } from "../../shared/shared.entity";
 import { User } from "../../user/entities/user.entity";
 import { Column, Entity, ManyToOne } from "typeorm";
-import { IssuesCategory } from "../enums/issue-category.enum";
-import { IssuesPriority } from "../enums/issue-priority.enum";
-import { IssuesStatus } from "../enums/issue-status.enum";
+import { IssueCategory } from "../enums/issue-category.enum";
+import { IssuePriority } from "../enums/issue-priority.enum";
+import { IssueStatus } from "../enums/issue-status.enum";
 
 @Entity()
 export class Issue extends SharedEntity {
@@ -18,8 +18,8 @@ export class Issue extends SharedEntity {
   description: string;
 
   @Column()
-  @ApiProperty({enum: IssuesCategory, example: IssuesCategory.Shared, description: 'Category of Issue, field to tell if this Issue shred for all users all private' })
-  category: IssuesCategory;
+  @ApiProperty({enum: IssueCategory, example: IssueCategory.Shared, description: 'Category of Issue, field to tell if this Issue shred for all users all private' })
+  category: IssueCategory;
 
   @ManyToOne(type => Flat)
   @ApiProperty({ type: Number, example: 2, description: 'Flat this issue come from' })
@@ -34,14 +34,14 @@ export class Issue extends SharedEntity {
   assignedTo: User;
 
   @Column({nullable: true})
-  @ApiProperty({ enum: IssuesPriority, example: IssuesPriority.Common, description: 'Priority of task (filled by moderator)' })
-  priority: IssuesPriority;
+  @ApiProperty({ enum: IssuePriority, example: IssuePriority.Common, description: 'Priority of task (filled by moderator)' })
+  priority: IssuePriority;
 
   @Column()
   @ApiProperty({ example: false, description: 'Is task could be given to outsource', default: false })
   shared_pool: boolean;
 
-  @Column({default: IssuesStatus.Created})
-  @ApiProperty({ enum: IssuesStatus, example: IssuesStatus.Created, description: 'Status of Issue', default: IssuesStatus.Created })
-  status: IssuesStatus;
+  @Column({default: IssueStatus.Created})
+  @ApiProperty({ enum: IssueStatus, example: IssueStatus.Created, description: 'Status of Issue', default: IssueStatus.Created })
+  status: IssueStatus;
 }

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { MetersService } from './meters.service';
+import { MeterService } from './meter.service';
 import { CreateMeterDto } from './dto/create-meter.dto';
 import { UpdateMeterDto } from './dto/update-meter.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -8,8 +8,8 @@ import { SendMeterValuesDto } from './dto/send-meter-values.dto';
 
 @ApiTags('Meter')
 @Controller('Meter')
-export class MetersController {
-  constructor(private readonly metersService: MetersService) {}
+export class MeterController {
+  constructor(private readonly metersService: MeterService) {}
 
   @Post()
   @ApiOperation({ summary: 'Create meter, staff only' })

@@ -1,20 +1,20 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IssuesPriority } from '../enums/issue-priority.enum';
-import { IssuesStatus } from '../enums/issue-status.enum';
-import { CreateIssuesDto } from './create-issue.dto';
+import { IssuePriority } from '../enums/issue-priority.enum';
+import { IssueStatus } from '../enums/issue-status.enum';
+import { CreateIssueDto } from './create-issue.dto';
 
-export class UpdateIssuesDto extends PartialType(CreateIssuesDto) {
+export class UpdateIssueDto extends PartialType(CreateIssueDto) {
   @ApiProperty({ example: 1, description: 'id of issue' })
   id: number;
 
-  @ApiProperty({enum: IssuesStatus, example: IssuesStatus.Created, description: 'Status of issue' })
-  status: IssuesStatus;
+  @ApiProperty({enum: IssueStatus, example: IssueStatus.Created, description: 'Status of issue' })
+  status: IssueStatus;
     
   @ApiProperty({ example: 2, description: 'Worker id that resolved this issue' })
   assigned_to: number;
 
-  @ApiProperty({enum: IssuesPriority, example: IssuesPriority.Common, description: 'Priority of task (filled by moderator)' })
-  priority: IssuesPriority;
+  @ApiProperty({enum: IssuePriority, example: IssuePriority.Common, description: 'Priority of task (filled by moderator)' })
+  priority: IssuePriority;
 
   @ApiProperty({ example: false, description: 'Is this task can be outsourced' })
   shared_pool: boolean;
