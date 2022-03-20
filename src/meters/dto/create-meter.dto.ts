@@ -17,6 +17,6 @@ export class CreateMeterDto {
   @ApiProperty({ example: false, description: 'Is this meter reads values of whole building' })
   is_shared: boolean;
 
-  @ApiPropertyOptional({ example: 1, description: 'id of flat or home, depends on is_shared property' })
+  @ApiProperty({ example: 1, description: 'id of flat or home, depends on is_shared property' })
   flat_or_home_id: number;
 }

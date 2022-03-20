@@ -7,7 +7,7 @@ export class CreateUserDto {
   @ApiPropertyOptional({ example: 'johnCoffe@gmail.com', description: 'Email of user' })
   email: string;
 
-  @ApiProperty({ example: '+79999999999', description: 'Phone of user' })
+  @ApiPropertyOptional({ example: '+79999999999', description: 'Phone of user' })
   phone: string;
 
   @ApiProperty({ example: 'password', description: 'Password of user' })

@@ -1,4 +1,4 @@
-export enum ApplicationCategory {
+export enum IssuesCategory {
   Shared = 'Shared',
   Private = 'Private',
 }

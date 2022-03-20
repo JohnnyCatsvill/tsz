@@ -1,13 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Home } from 'src/home/entities/home.entity';
 import { SharedEntity } from 'src/shared/shared.entity';
+import { User } from 'src/user/entities/user.entity';
+import { Column, Entity, ManyToOne } from 'typeorm';
 
+@Entity()
 export class News extends SharedEntity {
+  @Column()
   @ApiProperty({
     example: 'Новые поборы на ремонт крыши',
     description: 'Title of the news',
   })
   title: string;
 
+  @Column()
   @ApiProperty({
     example:
       'Крыша совсем шатай делает, ветер еще раз раз и вообще крыша не будет',
@@ -15,9 +21,11 @@ export class News extends SharedEntity {
   })
   description: string;
 
-  @ApiProperty({ example: 12, description: 'id of home news attached to' })
-  id_home: number;
+  @ManyToOne(type => Home)
+  @ApiProperty({ type: Number, example: 2, description: 'home this news attahced to' })
+  home: Home;
 
-  @ApiProperty({ example: 2, description: 'id of user who wrote this news' })
-  id_user: number;
+  @ManyToOne(type => User)
+  @ApiProperty({ type: Number, example: 2, description: 'user, who wrote this news' })
+  user: User;
 }
