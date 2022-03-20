@@ -7,6 +7,7 @@ import { IssueModule } from './modules/issue/issue.module';
 import { FlatModule } from './modules/flat/flat.module';
 import { HomeModule } from './modules/home/home.module';
 import { AuthModule } from "./modules/auth/auth.module";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { AuthModule } from "./modules/auth/auth.module";
     MeterModule,
     UserModule, 
     FlatModule, 
-    HomeModule, AuthModule,
+    HomeModule, AuthModule
   ],
 })
 export class AppModule {}
