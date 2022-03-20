@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IssueService } from './issue.service';
-import { CreateIssuesDto } from './dto/create-issue.dto';
-import { UpdateIssuesDto } from './dto/update-issue.dto';
+import { CreateIssueDto } from './dto/create-issue.dto';
+import { UpdateIssueDto } from './dto/update-issue.dto';
 import { Issue } from './entities/issue.entity';
 
 @ApiTags('Issue')
@@ -13,7 +13,7 @@ export class IssueController {
   @Post()
   @ApiOperation({ summary: 'Create Issue' })
   @ApiResponse({type: Issue})
-  async create(@Body() createNewsDto: CreateIssuesDto) {
+  async create(@Body() createNewsDto: CreateIssueDto) {
     return this.issueService.create(createNewsDto);
   }
 
@@ -36,8 +36,8 @@ export class IssueController {
   @ApiOperation({ summary: 'Updates Issue by id, staff only' })
   @ApiResponse({type: Issue})
   @ApiParam({name: 'id', example: 2})
-  @ApiBody({type: UpdateIssuesDto})
-  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateIssuesDto) {
+  @ApiBody({type: UpdateIssueDto})
+  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateIssueDto) {
     return this.issueService.update(+id, updateNewsDto);
   }
 
