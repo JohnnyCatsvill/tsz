@@ -27,5 +27,5 @@ export class Flat extends SharedEntity {
 
   // @OneToMany(type => Issues, issue => issue.flat)
   // @ApiProperty({ type: [Issues], description: 'Issues that come from that flat' })
-  // issues: Issues[];
+  // issue: Issues[];
 }

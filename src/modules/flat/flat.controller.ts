@@ -4,8 +4,8 @@ import { CreateFlatDto } from './dto/create-flat.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Flat } from './entities/flat.entity';
 
-@ApiTags('flat')
-@Controller('flat')
+@ApiTags('Flat')
+@Controller('Flat')
 export class FlatController {
   constructor(private readonly flatService: FlatService) {}
 

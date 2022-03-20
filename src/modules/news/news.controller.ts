@@ -5,8 +5,8 @@ import { UpdateNewsDto } from './dto/update-news.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { News } from './entities/news.entity';
 
-@ApiTags('news')
-@Controller('news')
+@ApiTags('News')
+@Controller('News')
 export class NewsController {
   constructor(private readonly newsService: NewsService) {}
 

@@ -4,8 +4,8 @@ import { CreateHomeDto } from './dto/create-home.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Home } from './entities/home.entity';
 
-@ApiTags('home')
-@Controller('home')
+@ApiTags('Home')
+@Controller('Home')
 export class HomeController {
   constructor(private readonly homeService: HomeService) {}
 

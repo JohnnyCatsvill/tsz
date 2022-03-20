@@ -5,8 +5,8 @@ import { CreateIssuesDto } from './dto/create-issue.dto';
 import { UpdateIssuesDto } from './dto/update-issue.dto';
 import { Issues } from './entities/issue.entity';
 
-@ApiTags('Issues')
-@Controller('Issues')
+@ApiTags('Issue')
+@Controller('Issue')
 export class IssuesController {
   constructor(private readonly issueService: IssuesService) {}
 

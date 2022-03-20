@@ -6,8 +6,8 @@ import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/s
 import { Meter } from './entities/meter.entity';
 import { SendMeterValuesDto } from './dto/send-meter-values.dto';
 
-@ApiTags('meters')
-@Controller('meters')
+@ApiTags('Meter')
+@Controller('Meter')
 export class MetersController {
   constructor(private readonly metersService: MetersService) {}
 
@@ -19,7 +19,7 @@ export class MetersController {
   }
 
   @Get()
-  @ApiOperation({ summary: 'Finds all meters user connected to, everyone for staff' })
+  @ApiOperation({ summary: 'Finds all meter user connected to, everyone for staff' })
   @ApiResponse({type: [Meter]})
   findAll() {
     return this.metersService.findAll();
