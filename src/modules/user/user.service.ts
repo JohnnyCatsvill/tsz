@@ -13,22 +13,29 @@ export class UserService {
   ){}
 
   async create(createUserDto: CreateUserDto) {
-    
+    const user = this.userRepository.create(createUserDto);
+    return this.userRepository.save(user);
   }
 
-  async findAll() {
-    return `This action returns all user`;
+
+  async remove(id: number) {
+    const deletedUser = await this.userRepository.delete(id);
+
+  }
+
+  findAll() {
   }
 
   async findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return await this.userRepository.findOne(id);
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
+  async findByLogin(login: string) {
+    return await this.userRepository.findOne({where: {login: login}});
+  }
+
+  update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
 }
