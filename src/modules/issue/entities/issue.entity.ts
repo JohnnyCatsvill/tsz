@@ -8,7 +8,7 @@ import { IssuesPriority } from "../enums/issue-priority.enum";
 import { IssuesStatus } from "../enums/issue-status.enum";
 
 @Entity()
-export class Issues extends SharedEntity {
+export class Issue extends SharedEntity {
   @Column()
   @ApiProperty({ example: 'Перегорела лампочка', description: 'Title of Issue (main problem)' })
   title: string;

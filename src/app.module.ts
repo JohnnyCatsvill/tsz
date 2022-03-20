@@ -3,7 +3,7 @@ import { NewsModule } from './modules/news/news.module';
 import { MetersModule } from './modules/meter/meters.module';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { IssuesModule } from './modules/issue/issue.module';
+import { IssueModule } from './modules/issue/issue.module';
 import { FlatModule } from './modules/flat/flat.module';
 import { HomeModule } from './modules/home/home.module';
 
@@ -11,7 +11,7 @@ import { HomeModule } from './modules/home/home.module';
   imports: [
     TypeOrmModule.forRoot(),
     NewsModule, 
-    IssuesModule, 
+    IssueModule,
     MetersModule, 
     UserModule, 
     FlatModule, 

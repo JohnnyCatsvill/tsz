@@ -3,13 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateIssuesDto } from './dto/create-issue.dto';
 import { UpdateIssuesDto } from './dto/update-issue.dto';
-import { Issues } from './entities/issue.entity';
+import { Issue } from './entities/issue.entity';
 
 @Injectable()
-export class IssuesService {
+export class IssueService {
   constructor(
-    @InjectRepository(Issues)
-    private issueRepository: Repository<Issues>,
+    @InjectRepository(Issue)
+    private issueRepository: Repository<Issue>,
   ) {}
 
   create(createIsseDto: CreateIssuesDto) {
