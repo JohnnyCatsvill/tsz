@@ -1,8 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { type } from "os";
-import { Flat } from "src/flat/entities/flat.entity";
-import { Home } from "src/home/entities/home.entity";
-import { SharedEntity } from "src/shared/shared.entity";
+import { Flat } from "../../flat/entities/flat.entity";
+import { Home } from "../../home/entities/home.entity";
+import { SharedEntity } from "../../shared/shared.entity";
 import { Column, Entity, ManyToMany, ManyToOne } from "typeorm";
 import { MeterType } from "../enums/meter-type.enum";
 

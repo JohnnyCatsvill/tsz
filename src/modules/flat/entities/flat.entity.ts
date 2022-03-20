@@ -1,8 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Home } from "src/home/entities/home.entity";
-import { Issues } from "src/issues/entities/issue.entity";
-import { SharedEntity } from "src/shared/shared.entity";
-import { PurchaseDocument } from "src/user/entities/purchase-document.entity";
+import { Home } from "../../home/entities/home.entity";
+import { SharedEntity } from "../../shared/shared.entity";
 import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
 @Entity()

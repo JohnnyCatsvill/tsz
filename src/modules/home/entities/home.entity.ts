@@ -1,8 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Flat } from "src/flat/entities/flat.entity";
-import { News } from "src/news/entities/news.entity";
-import { SharedEntity } from "src/shared/shared.entity";
-import { Tsz } from "src/tsz/entities/tsz.entity";
+import { SharedEntity } from "../../shared/shared.entity";
+import { Tsz } from "../../tsz/entities/tsz.entity";
 import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 
 @Entity()

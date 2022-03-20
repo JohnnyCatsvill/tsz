@@ -47,8 +47,8 @@ $ npm run typeorm migration:run
 
 ## Docker
 ```bash
-# craete new docker image (not working right now hz why)
-$ docker compose up -t tsz .
+# craete new docker container pack
+$ docker compose up
 ```
 
 ## License

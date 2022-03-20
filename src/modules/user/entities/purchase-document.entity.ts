@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Flat } from "src/flat/entities/flat.entity";
-import { SharedEntity } from "src/shared/shared.entity";
-import { Column, Entity, ManyToMany, ManyToOne } from "typeorm";
+import { Flat } from "../../flat/entities/flat.entity";
+import { SharedEntity } from "../../shared/shared.entity";
+import { Column, Entity, ManyToOne } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()

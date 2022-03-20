@@ -1,11 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Issues } from "src/issues/entities/issue.entity";
-import { News } from "src/news/entities/news.entity";
-import { SharedEntity } from "src/shared/shared.entity";
-import { Tsz } from "src/tsz/entities/tsz.entity";
-import { Column, Entity, JoinTable, ManyToMany, OneToMany } from "typeorm";
+import { SharedEntity } from "../../shared/shared.entity";
+import { Tsz } from "../../tsz/entities/tsz.entity";
+import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
 import { UserRole } from "../enums/user-role.enum";
-import { PurchaseDocument } from "./purchase-document.entity";
 
 @Entity()
 export class User extends SharedEntity {

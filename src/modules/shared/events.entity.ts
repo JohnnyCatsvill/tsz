@@ -1,5 +1,5 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ApiProperty } from '@nestjs/swagger';
+import { Column, Entity } from 'typeorm';
 import { Table } from './enums/tables.enum';
 import { SharedEntity } from './shared.entity';
 

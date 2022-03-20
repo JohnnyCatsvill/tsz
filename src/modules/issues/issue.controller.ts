@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { IssuesService } from './issue.service';
-import { CreateIssuesDto } from './dto/create-Issue.dto';
+import { CreateIssuesDto } from './dto/create-issue.dto';
 import { UpdateIssuesDto } from './dto/update-issue.dto';
 import { Issues } from './entities/issue.entity';
 

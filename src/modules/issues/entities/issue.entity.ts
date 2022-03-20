@@ -1,7 +1,7 @@
-import { ApiProperty, PartialType } from "@nestjs/swagger";
-import { Flat } from "src/flat/entities/flat.entity";
-import { SharedEntity } from "src/shared/shared.entity";
-import { User } from "src/user/entities/user.entity";
+import { ApiProperty } from "@nestjs/swagger";
+import { Flat } from "../../flat/entities/flat.entity";
+import { SharedEntity } from "../../shared/shared.entity";
+import { User } from "../../user/entities/user.entity";
 import { Column, Entity, ManyToOne } from "typeorm";
 import { IssuesCategory } from "../enums/issue-category.enum";
 import { IssuesPriority } from "../enums/issue-priority.enum";
