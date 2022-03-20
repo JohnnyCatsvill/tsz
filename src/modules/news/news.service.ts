@@ -24,7 +24,6 @@ export class NewsService {
     const news = this.newsRepository.create(createNewsDto);
     const author = await this.userRepository.findOne({id: createNewsDto.id_author});
     news.author = author;
-    news.home = createNewsDto.id_home
     return this.newsRepository.save(news);
   }
 
@@ -37,7 +36,9 @@ export class NewsService {
   }
 
   async update(id: number, updateNewsDto: UpdateNewsDto): Promise<News> {
-    await this.newsRepository.update({id}, {...updateNewsDto, updated_at: Date()})
+    const {id_author, ...remain} = updateNewsDto;
+    const author = await this.userRepository.findOne({id: id_author});
+    await this.newsRepository.update({id}, {...remain, author: author, updated_at: Date()})
     return this.newsRepository.findOne({id});
   }
 

@@ -23,7 +23,7 @@ export class News extends SharedEntity {
 
   @Column({nullable: true})
   @ApiProperty({ type: Home, description: 'home this news attahced to', default: null })
-  home: number;
+  id_home: number;
 
   @ManyToOne(type => User)
   @ApiProperty({ type: Number, example: 2, description: 'user, who wrote this news' })
