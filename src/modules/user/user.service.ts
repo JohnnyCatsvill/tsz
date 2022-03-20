@@ -4,6 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
+import { Issue } from "../issue/entities/issue.entity";
+import { UpdateIssueDto } from "../issue/dto/update-issue.dto";
 
 @Injectable()
 export class UserService {
@@ -13,22 +15,29 @@ export class UserService {
   ){}
 
   async create(createUserDto: CreateUserDto) {
-    
+    const user = this.userRepository.create(createUserDto);
+    return this.userRepository.save(user);
   }
 
-  async findAll() {
-    return `This action returns all user`;
-  }
-
-  async findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  async update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async findAll(): Promise<[User[], number]> {
+    return this.userRepository.findAndCount();
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} user`;
+     await this.userRepository.delete(id);
   }
+
+  async findOne(id: number) {
+    return await this.userRepository.findOne(id);
+  }
+
+  async findByLogin(login: string) {
+    return await this.userRepository.findOne({where: {login: login}});
+  }
+
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    await this.userRepository.update({id}, {...updateUserDto, updated_at: Date()});
+    return this.userRepository.findOne({id});
+  }
+
 }

@@ -6,15 +6,15 @@ import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/s
 import { User } from './entities/user.entity';
 
 @ApiTags('User')
-@Controller('User')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({type: User})
-  async create(@Body() createNewsDto: CreateUserDto) {
-    return this.userService.create(createNewsDto);
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);
   }
 
   @Get()
