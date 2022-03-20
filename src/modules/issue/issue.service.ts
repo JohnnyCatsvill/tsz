@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Flat } from '../flat/entities/flat.entity';
+import { Home } from '../home/entities/home.entity';
+import { User } from '../user/entities/user.entity';
 import { CreateIssuesDto } from './dto/create-issue.dto';
 import { UpdateIssuesDto } from './dto/update-issue.dto';
 import { Issue } from './entities/issue.entity';
@@ -10,29 +13,39 @@ export class IssueService {
   constructor(
     @InjectRepository(Issue)
     private issueRepository: Repository<Issue>,
+
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+
+    @InjectRepository(Home)
+    private homeRepository: Repository<Home>,
+
+    @InjectRepository(Flat)
+    private flatRepository: Repository<Flat>,
   ) {}
 
-  create(createIsseDto: CreateIssuesDto) {
+  async create(createIssueDto: CreateIssuesDto): Promise<Issue> {
+    const creator = this.userRepository.findOne({id: createIssueDto.id_created_by})
     return 'This action adds a new Isse';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all Isses`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} Isse`;
   }
 
-  update(id: number, updateIsseDto: UpdateIssuesDto) {
+  async update(id: number, updateIsseDto: UpdateIssuesDto) {
     return `This action updates a #${id} Isse`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} Isse`;
   }
 
-  softRemove(id: number) {
+  async softRemove(id: number) {
     return `This action removes a #${id} Isse`;
   }
 }

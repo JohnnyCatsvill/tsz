@@ -13,14 +13,14 @@ export class IssueController {
   @Post()
   @ApiOperation({ summary: 'Create Issue' })
   @ApiResponse({type: Issue})
-  create(@Body() createNewsDto: CreateIssuesDto) {
+  async create(@Body() createNewsDto: CreateIssuesDto) {
     return this.issueService.create(createNewsDto);
   }
 
   @Get()
   @ApiOperation({ summary: 'Finds all Issues of this user plus all shared ones, all for staff' })
   @ApiResponse({type: [Issue]})
-  findAll() {
+  async findAll() {
     return this.issueService.findAll();
   }
 
@@ -28,7 +28,7 @@ export class IssueController {
   @ApiOperation({ summary: 'Finds Issue by id if user has acces to, all for staff' })
   @ApiResponse({type: Issue})
   @ApiParam({name: 'id', example: 2})
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.issueService.findOne(+id);
   }
 
@@ -37,7 +37,7 @@ export class IssueController {
   @ApiResponse({type: Issue})
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: UpdateIssuesDto})
-  update(@Param('id') id: string, @Body() updateNewsDto: UpdateIssuesDto) {
+  async update(@Param('id') id: string, @Body() updateNewsDto: UpdateIssuesDto) {
     return this.issueService.update(+id, updateNewsDto);
   }
 
@@ -45,7 +45,7 @@ export class IssueController {
   @ApiOperation({ summary: 'Deletes Issue by id (hard delete), for staff' })
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: Issue})
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.issueService.remove(+id);
   }
 
@@ -53,7 +53,7 @@ export class IssueController {
   @ApiOperation({ summary: 'Deletes Issue by id if user has access to or staff' })
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: Issue})
-  softRemove(@Param('id') id: string) {
+  async softRemove(@Param('id') id: string) {
     return this.issueService.softRemove(+id);
   }
 }
