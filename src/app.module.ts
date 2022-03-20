@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { IssuesModule } from './modules/issues/issue.module';
 import { FlatModule } from './modules/flat/flat.module';
 import { HomeModule } from './modules/home/home.module';
-import { TszModule } from './modules/tsz/tsz.module';
 
 @Module({
   imports: [
@@ -17,6 +16,6 @@ import { TszModule } from './modules/tsz/tsz.module';
     UserModule, 
     FlatModule, 
     HomeModule, 
-    TszModule],
+  ],
 })
 export class AppModule {}

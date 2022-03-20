@@ -1,26 +1,42 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateHomeDto } from './dto/create-home.dto';
-import { UpdateHomeDto } from './dto/update-home.dto';
+import { Home } from './entities/home.entity';
 
 @Injectable()
 export class HomeService {
-  create(createHomeDto: CreateHomeDto) {
-    return 'This action adds a new home';
+  constructor(
+    @InjectRepository(Home)
+    private homeRepository: Repository<Home>,
+  ) {}
+
+  async create(createHomeDto: CreateHomeDto): Promise<Home> {
+    const home = this.homeRepository.create(createHomeDto);
+    return this.homeRepository.save(home);
   }
 
-  findAll() {
-    return `This action returns all home`;
+  async findAll(): Promise<[Home[], number]> {
+    return this.homeRepository.findAndCount();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} home`;
+  async findOne(id: number): Promise<Home> {
+    return this.homeRepository.findOne({id});
   }
 
-  update(id: number, updateHomeDto: UpdateHomeDto) {
-    return `This action updates a #${id} home`;
+  async update(id: number, updateHomeDto: CreateHomeDto) {
+    await this.homeRepository.update({id}, {...updateHomeDto, updated_at: Date()})
+    return this.homeRepository.findOne({id});
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} home`;
+  async softRemove(id: number): Promise<Home> {
+    await this.homeRepository.update({id}, {deleted_at: Date()});
+    return this.homeRepository.findOne({id});
+  }
+
+  async remove(id: number): Promise<Home> {
+    const home = await this.homeRepository.findOne({id});
+    this.homeRepository.delete({id});
+    return home;
   }
 }

@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { SharedEntity } from "../../shared/shared.entity";
-import { Tsz } from "../../tsz/entities/tsz.entity";
-import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity } from "typeorm";
 
 @Entity()
 export class Home extends SharedEntity {
@@ -16,10 +15,6 @@ export class Home extends SharedEntity {
   @Column()
   @ApiProperty({ example: "ул. Петрова", description: 'Street name' })
   street: string;
-
-  @ManyToOne(type => Tsz)
-  @ApiProperty({type: Number, example: 2, description: 'Tsz this home assigned to' })
-  tsz: Tsz;
 
   // @OneToMany(type => Flat, flat => flat.home)
   // @ApiProperty({type: [Flat], description: 'Flats in this house'})

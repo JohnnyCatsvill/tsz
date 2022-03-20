@@ -32,20 +32,28 @@ export class IssuesController {
     return this.issueService.findOne(+id);
   }
 
+  @Patch(':id')
   @ApiOperation({ summary: 'Updates Issue by id, staff only' })
   @ApiResponse({type: Issues})
-  @Patch(':id')
   @ApiParam({name: 'id', example: 2})
   @ApiBody({type: UpdateIssuesDto})
   update(@Param('id') id: string, @Body() updateNewsDto: UpdateIssuesDto) {
     return this.issueService.update(+id, updateNewsDto);
   }
 
-  @ApiOperation({ summary: 'Deletes Issue by id if user has access to, everyone for staff' })
-  @Delete(':id')
+  @Delete(':id/hard')
+  @ApiOperation({ summary: 'Deletes Issue by id (hard delete), for staff' })
   @ApiParam({name: 'id', example: 2})
   @ApiResponse({type: Issues})
   remove(@Param('id') id: string) {
     return this.issueService.remove(+id);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Deletes Issue by id if user has access to or staff' })
+  @ApiParam({name: 'id', example: 2})
+  @ApiResponse({type: Issues})
+  softRemove(@Param('id') id: string) {
+    return this.issueService.softRemove(+id);
   }
 }

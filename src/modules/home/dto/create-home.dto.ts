@@ -9,7 +9,4 @@ export class CreateHomeDto {
 
   @ApiProperty({ example: Date(), description: 'Street name' })
   street: string;
-
-  @ApiProperty({ example: Date(), description: 'Tsz this home assigned to' })
-  id_tsz: number;
 }

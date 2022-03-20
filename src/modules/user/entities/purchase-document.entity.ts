@@ -14,7 +14,7 @@ export class PurchaseDocument extends SharedEntity {
   @ApiProperty({ type: Number, example: 2, description: 'User, this document belongs to'})
   user: User
 
-  @ManyToOne(type => Flat)
+  @ManyToOne(type => Flat, { onDelete: 'CASCADE' })
   @ApiProperty({ type: Number, example: 2, description: 'Flat, this document belongs to'})
   flat: Flat
 }

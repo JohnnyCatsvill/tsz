@@ -17,7 +17,7 @@ export class Flat extends SharedEntity {
   @ApiProperty({ example: 2, description: 'Entrance number' })
   entrance: number;
 
-  @ManyToOne(type => Home)
+  @ManyToOne(type => Home, {onDelete: 'CASCADE'})
   @ApiProperty({type: Number, example: 2, description: 'Home where this flat is'})
   home: Home
 

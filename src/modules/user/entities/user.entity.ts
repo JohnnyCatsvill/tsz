@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { SharedEntity } from "../../shared/shared.entity";
-import { Tsz } from "../../tsz/entities/tsz.entity";
 import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
 import { UserRole } from "../enums/user-role.enum";
 
@@ -41,11 +40,6 @@ export class User extends SharedEntity {
   // @OneToMany(type => PurchaseDocument, purchaseDocument => purchaseDocument.user)
   // @ApiProperty({type: [PurchaseDocument], description: 'purchase documents that attached to this user'})
   // purchaseDocuments: PurchaseDocument[];
-
-  @ManyToMany(type => Tsz, tsz => tsz.users)
-  @JoinTable()
-  @ApiProperty({type: [Number], example: [2], description: 'tszs this man attached to'})
-  tszs: Tsz[];
 
   // @OneToMany(type => News, news => news.user)
   // @ApiProperty({type: [News], description: 'news from this user' })
